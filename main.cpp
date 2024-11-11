@@ -3,19 +3,15 @@
 
 int main() {
     clock_t start, end;
-    double elapsed_time;
-    FProcess* p = new FProcess(2501, "My process", NULL);
-    p->print();
-    cout << endl;
-    vector<string> pids;
+    vector<Process> list_p;
+    size_t i;
     start = clock();
-    getPIDs(pids);
+    getInfoProcess(list_p);
     end = clock();
-    vector<string>::iterator it;
-    for(it = pids.begin(); it != pids.end(); ++it) {
-        cout << *it << endl;
+    for(i=0; i < list_p.size(); i++) {
+        list_p[i].print();
     }
-    elapsed_time = double(end - start) / CLOCKS_PER_SEC;
+    double elapsed_time = double(end - start) / CLOCKS_PER_SEC;
     cout << "Time: " << elapsed_time << endl;
     return 0;
 }
